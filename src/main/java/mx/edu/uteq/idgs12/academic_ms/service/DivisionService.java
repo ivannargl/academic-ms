@@ -1,6 +1,7 @@
 package mx.edu.uteq.idgs12.academic_ms.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
@@ -34,7 +35,11 @@ public class DivisionService {
                 .map(this::toDTO)
                 .collect(Collectors.toList());
     }
-
+    
+    public Optional<DivisionDTO> getById(Integer id) {
+        return divisionRepository.findById(id)
+                .map(this::toDTO);
+    }
 
     private DivisionDTO toDTO(Division division) {
         DivisionDTO dto = new DivisionDTO();
