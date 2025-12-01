@@ -36,4 +36,10 @@ public class UniversityController {
     public ResponseEntity<University> create(@RequestBody UniversityDTO dto) {
         return ResponseEntity.ok(universityService.save(dto));
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<University> update(@PathVariable Integer id, @RequestBody UniversityDTO dto) {
+        dto.setIdUniversity(id);
+        return ResponseEntity.ok(universityService.save(dto));
+    }
 }
