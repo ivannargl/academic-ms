@@ -41,6 +41,13 @@ public class DivisionService {
                 .map(this::toDTO);
     }
 
+    public List<DivisionDTO> getByUniversity(Integer idUniversity) {
+        return divisionRepository.findByUniversity_IdUniversity(idUniversity)
+                .stream()
+                .map(this::toDTO)
+                .collect(Collectors.toList());
+    }
+    
     private DivisionDTO toDTO(Division division) {
         DivisionDTO dto = new DivisionDTO();
         BeanUtils.copyProperties(division, dto);
