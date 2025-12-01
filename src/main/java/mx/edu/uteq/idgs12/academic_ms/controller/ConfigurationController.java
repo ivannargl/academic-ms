@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -53,4 +54,10 @@ public class ConfigurationController {
         dto.setIdConfiguration(id);
         return ResponseEntity.ok(configurationService.save(dto));
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+        configurationService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }
+

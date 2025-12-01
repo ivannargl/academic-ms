@@ -47,4 +47,8 @@ public class ConfigurationService {
 
         return configurationRepository.save(config);
     }
+
+    public void delete(Integer id) {
+        configurationRepository.deleteById(id);
+    }
 }
