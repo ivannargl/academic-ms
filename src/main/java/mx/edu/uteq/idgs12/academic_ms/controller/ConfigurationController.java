@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -44,6 +45,12 @@ public class ConfigurationController {
 
     @PostMapping
     public ResponseEntity<Configuration> create(@RequestBody ConfigurationDTO dto) {
+        return ResponseEntity.ok(configurationService.save(dto));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Configuration> update(@PathVariable Integer id, @RequestBody ConfigurationDTO dto) {
+        dto.setIdConfiguration(id);
         return ResponseEntity.ok(configurationService.save(dto));
     }
 }
