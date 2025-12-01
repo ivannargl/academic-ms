@@ -38,4 +38,9 @@ public class DivisionController {
         return division.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
+
+    @GetMapping("/university/{idUniversity}")
+    public List<DivisionDTO> getByUniversity(@PathVariable Integer idUniversity) {
+        return divisionService.getByUniversity(idUniversity);
+    }
 }
